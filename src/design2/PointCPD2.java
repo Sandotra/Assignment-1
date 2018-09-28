@@ -1,7 +1,7 @@
 // This file contains material supporting section 2.9 of the textbook:
 // "Object Oriented Software Engineering" and is issued under the open-source
 // license found at www.lloseng.com 
-
+package design2;
 /**
  * This class contains instances of coordinates in either polar or
  * cartesian format.  It also provides the utilities to convert
@@ -12,7 +12,8 @@
  * @author Dr Timothy C. Lethbridge
  * @version July 2000
  */
-public class PointCP2 implements PointCP6
+import design3.PointCPD3;
+public class PointCPD2
 {
   //Instance variables ************************************************
   
@@ -34,11 +35,11 @@ public class PointCP2 implements PointCP6
   /**
    * Constructs a coordinate object, with a type identifier.
    */
-  public PointCP2(char type, double Rho, double Theta)
+  public PointCPD2(char type, double Rho, double Theta)
   {
-    if(type != 'C' && type != 'P')
+    if(type != 'C' && type != 'P') {
       throw new IllegalArgumentException();
-    
+    }
     if (type == 'C') {
     	Rho = (Math.sqrt(Math.pow(Rho, 2) + Math.pow(Theta, 2)));
     	Theta = Math.toDegrees(Math.atan2(Theta, Rho));
@@ -47,7 +48,7 @@ public class PointCP2 implements PointCP6
     this.Theta = Theta;
     
     }
-  }
+  
 	
   
   //Instance methods **************************************************
@@ -77,7 +78,7 @@ public class PointCP2 implements PointCP6
   /**
    * Converts Cartesian coordinates to Polar coordinates.
    */
-  public PointCP2 convertStorageToPolar()
+  public PointCPD2 convertStorageToPolar()
   {
 	  return this;
   }
@@ -85,9 +86,10 @@ public class PointCP2 implements PointCP6
   /**
    * Converts Polar coordinates to Cartesian coordinates.
    */
-  public PointCP3 convertStorageToCartesian()
+  public PointCPD3 convertStorageToCartesian()
   {
-      return PointCP3(C,getX(),getY());
+	  PointCPD3 point = new PointCPD3('C', getX(), getY());
+      return point;
   }
 
   /**
@@ -98,7 +100,7 @@ public class PointCP2 implements PointCP6
    * @param pointB The second point.
    * @return The distance between the two points.
    */
-  public double getDistance(PointCP pointB)
+  public double getDistance(PointCPD2 pointB)
   {
     // Obtain differences in X and Y, sign is not important as these values
     // will be squared later.
@@ -116,13 +118,13 @@ public class PointCP2 implements PointCP6
    * @param rotation The number of degrees to rotate the point.
    * @return The rotated image of the original point.
    */
-  public PointCP2 rotatePoint(double rotation)
+  public PointCPD2 rotatePoint(double rotation)
   {
     double radRotation = Math.toRadians(rotation);
     double X = getX();
     double Y = getY();
         
-    return new PointCP2('C',
+    return new PointCPD2('C',
       (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
       (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
   }
@@ -134,6 +136,6 @@ public class PointCP2 implements PointCP6
    */
   public String toString()
   {
-    return "Stored as Polar [" + getRho() + "," + getTheta() + "]") + "\n";
+    return "Stored as Polar [" + getRho() + "," + getTheta() + "]" + "\n";
   }
 }

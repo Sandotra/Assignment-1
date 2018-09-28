@@ -13,6 +13,7 @@ package design3;
  * @author Dr Timothy C. Lethbridge
  * @version July 2000
  */
+import design2.PointCPD2;
 public class PointCPD3
 {
   //Instance variables ************************************************
@@ -86,13 +87,8 @@ public class PointCPD3
    */
   public PointCPD2 convertStorageToPolar()
   {
-    if(typeCoord != 'P')
-    {
-      typeCoord = 'P';
-      PointCPD2 point = new PointCPD2('P', getRho(), getTheta());
-      return point;
-    }
-    return null;
+	PointCPD2 point = new PointCPD2('P', getRho(), getTheta());
+	return point;
   }
 	
   /**
@@ -100,13 +96,8 @@ public class PointCPD3
    */
   public PointCPD3 convertStorageToCartesian()
   {
-    if(typeCoord != 'C')
-    {
-      typeCoord = 'C';
-      PointCPD3 point = new PointCPD3('C', getX(), getY());
+	  PointCPD3 point = new PointCPD3('C', getX(), getY());
       return point;
-    }
-    return null;
   }
 
   /**
