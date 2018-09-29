@@ -49,12 +49,11 @@ public class PointCPD3
     } else if (type == 'C') {
     	this.xOrRho = xOrRho;
         this.yOrTheta = yOrTheta;
-        typeCoord = type;
     } else {
     	this.xOrRho = (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
     	this.yOrTheta = (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
-    	typeCoord = type;
     }
+    typeCoord = type;
   }
 	
   

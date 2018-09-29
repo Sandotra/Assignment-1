@@ -1,7 +1,6 @@
 package design2;
 import java.util.Scanner;
 import java.util.Random;
-import design3.PointCPD3;
 
 public class PointCPD2Test {
 	
