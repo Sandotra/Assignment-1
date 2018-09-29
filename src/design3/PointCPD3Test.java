@@ -42,14 +42,14 @@ public class PointCPD3Test {
 			double y = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
 			double rho = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
 			double theta = Math.toDegrees(Math.atan2(y, x));
-			PointCPD2 point = new PointCPD2('P', rho, theta);
+			PointCPD3 point = new PointCPD3('P', rho, theta);
 			point.getX();
 			point.getY();
 			point.getRho();
 			point.getTheta();
-			PointCPD2 point1;
-			point.convertStorageToCartesian();
-			point1 = point.convertStorageToPolar();
+			PointCPD3 point1;
+			point1 = point.convertStorageToCartesian();
+			point.convertStorageToPolar();
 			point.getDistance(point1);
 			point.rotatePoint(10.0);
 		}
