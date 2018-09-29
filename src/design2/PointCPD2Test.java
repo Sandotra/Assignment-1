@@ -26,7 +26,9 @@ public class PointCPD2Test {
 		if ((i%2)==0) {
 			double x = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
 			double y = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
-			PointCPD2 point = new PointCPD2('C', x, y);
+			double rho = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
+			double theta = Math.toDegrees(Math.atan2(y, x));
+			PointCPD2 point = new PointCPD2('P', rho, theta);
 			point.getX();
 			point.getY();
 			point.getRho();
@@ -40,16 +42,14 @@ public class PointCPD2Test {
 		} else {
 			double x = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
 			double y = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
-			double rho = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
-			double theta = Math.toDegrees(Math.atan2(y, x));
-			PointCPD2 point = new PointCPD2('P', rho, theta);
+			PointCPD2 point = new PointCPD2('C', x, y);
 			point.getX();
 			point.getY();
 			point.getRho();
 			point.getTheta();
 			PointCPD2 point1;
-			point1 = point.convertStorageToPolar();
-			point.convertStorageToCartesian();
+			point.convertStorageToPolar();
+			point1 = point.convertStorageToCartesian();
 			point.getDistance(point1);
 			point.rotatePoint(10.0);
 		}

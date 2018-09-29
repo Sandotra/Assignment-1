@@ -16,6 +16,12 @@ import design3.PointCPD3;
 public class PointCPD2
 {
   //Instance variables ************************************************
+
+  /**
+   * Contains C(artesian) or P(olar) to identify the type of
+   * coordinates that are being dealt with.
+   */
+  private char typeCoord;
   
   /**
    * Contains the current value of X or RHO depending on the type
@@ -43,9 +49,12 @@ public class PointCPD2
     if (type == 'C') {
     	Rho = (Math.sqrt(Math.pow(Rho, 2) + Math.pow(Theta, 2)));
     	Theta = Math.toDegrees(Math.atan2(Theta, Rho));
+    } else if (type == 'P'){
+      this.Rho = Rho;
+      this.Theta = Theta;
     }
-    this.Rho = Rho;
-    this.Theta = Theta;
+
+    typeCoord = type;
     
     }
   
