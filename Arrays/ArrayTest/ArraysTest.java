@@ -10,10 +10,13 @@ public class ArraysTest {
 		int number = scan.nextInt();
 		scan.close();
 		System.out.println();
+		
 		ArrayListTest(number);
 		System.out.println();
+		
 		VectorTest(number);
 		System.out.println();
+		
 		ArrayTest(number);
 		System.out.println();
 		
@@ -21,55 +24,89 @@ public class ArraysTest {
 
 	public static void ArrayListTest(int number) {
 		
-		ArrayList<Integer> al = new ArrayList<Integer>();
 		System.out.println("ArrayList");
 		
 		Random rand = new Random();
 		long startTime = System.currentTimeMillis();
 		
+		ArrayList<Integer> al = new ArrayList<Integer>();
 		for (int i = 0; i < number; i++) {
 			al.add(rand.nextInt(9));
 		}
 		
+		long constructionEndTime = System.currentTimeMillis();
+		int sum = 0;
+		for (int i = 0; i < al.size(); i++) {
+			sum = sum + al.get(i);
+		}
+		
 		long endTime = System.currentTimeMillis();
-		long time = endTime - startTime;
-		System.out.println("Total time taken in ms: " + time);
+		long totalTime = endTime - startTime;
+		long constructionTime = constructionEndTime - startTime;
+		long iterateTime = totalTime - constructionTime;
+		
+		System.out.println("Construction time taken in ms: " + constructionTime);
+		System.out.println("Iteration time taken in ms: " + iterateTime);
+		System.out.println("Total time taken in ms: " + totalTime);
 		
 	}
 	
 	public static void VectorTest(int number) {
 		
-		Vector<Integer> v = new Vector<Integer>(number);
 		System.out.println("Vector");
 		
 		Random rand = new Random();
 		long startTime = System.currentTimeMillis();
 		
+		Vector<Integer> v = new Vector<Integer>(number);
 		for (int i = 0; i < number; i++) {
 			v.add(rand.nextInt(9));
 		}
 		
+		long constructionEndTime = System.currentTimeMillis();
+		int sum = 0;
+		for (int i = 0; i < v.size(); i++) {
+			sum = sum + v.get(i);
+		}
+		
 		long endTime = System.currentTimeMillis();
-		long time = endTime - startTime;
-		System.out.println("Total time taken in ms: " + time);
+		long totalTime = endTime - startTime;
+		long constructionTime = constructionEndTime - startTime;
+		long iterateTime = totalTime - constructionTime;
+		
+		System.out.println("Construction time taken in ms: " + constructionTime);
+		System.out.println("Iteration time taken in ms: " + iterateTime);
+		System.out.println("Total time taken in ms: " + totalTime);
 		
 	}
 	
 	public static void ArrayTest(int number) {
 		
-		int[] array = new int[number];
 		System.out.println("Array");
 		
 		Random rand = new Random();
 		long startTime = System.currentTimeMillis();
 		
+		int[] array = new int[number];
 		for (int i = 0; i < number; i++) {
 			array[i] = rand.nextInt(9);
 		}
 		
-		long endTime = System.currentTimeMillis();
-		long time = endTime - startTime;
-		System.out.println("Total time take in ms: " + time);
+		long constructionEndTime = System.currentTimeMillis();
+		int sum = 0;
+		for (int i = 0; i < array.length; i++) {
+			sum = sum + array[i];
+		}
 		
+		long endTime = System.currentTimeMillis();
+		long totalTime = endTime - startTime;
+		long constructionTime = constructionEndTime - startTime;
+		long iterateTime = totalTime - constructionTime;
+		
+		System.out.println("Construction time taken in ms: " + constructionTime);
+		System.out.println("Iteration time taken in ms: " + iterateTime);
+		System.out.println("Total time taken in ms: " + totalTime);
+
 	}
+	
 }
