@@ -1,44 +1,49 @@
 package design6;
-import design6.PointCPD2D6;
+import design6.PointCPD3D6;
 
-public class PointCPD3D6 implements PointCPD6 {
+public class PointCPD2D6 implements PointCPD6 {
 	
 	private char typeCoord;
 	private double xOrRho;
 	private double yOrTheta;
 	
-	public PointCPD3D6(char type, double xOrRho, double yOrTheta) {
+	public PointCPD2D6(char type, double xOrRho, double yOrTheta) {
 		if(type != 'C' && type != 'P') {
-		      throw new IllegalArgumentException();
-		    } else if (type == 'C') {
-		    	this.xOrRho = xOrRho;
-		        this.yOrTheta = yOrTheta;
-		    } else {
-		    	this.xOrRho = (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
-		    	this.yOrTheta = (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
-		    }
-		    typeCoord = type;
-	}
+     		throw new IllegalArgumentException();
+    	}
+    	if (type == 'C') {
+    		this.xOrRho = (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
+    		this.yOrTheta = Math.toDegrees(Math.atan2(xOrTheta, yOrRho));
+    	} else if (type == 'P'){
+      		this.xOrRho = xOrRho;
+      		this.yOrTheta = yOrTheta;
+    }
+
+    typeCoord = type;
+    
+    }
+	
 
 	
-	public double getX() {
-		return xOrRho;
-	}
-
-	
-	public double getY() {
-		return yOrTheta;
-	}
-
-	
-	public double getRho() {
-		return (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
-	}
-
-	
-	public double getTheta() {
-		return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
-	}
+	public double getX()
+  {
+   return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
+  }
+  
+  public double getY()
+  {
+   return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
+  }
+  
+  public double getRho()
+  {
+   return xOrRho;
+  }
+  
+  public double getTheta()
+  {
+   return yOrTheta;
+  }
 
 	public PointCPD6 convertStorageToPolar() {
 		PointCPD6 point;
@@ -65,7 +70,7 @@ public class PointCPD3D6 implements PointCPD6 {
 		double radRotation = Math.toRadians(rotation);
 	    double X = getX();
 	    double Y = getY();
-	    PointCPD3D6 point = new PointCPD3D6('C',
+	    PointCPD2D6 point = new PointCPD2D6('C',
 	  	      (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
 		      (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
 	    PointCPD6 point1 = point;   
