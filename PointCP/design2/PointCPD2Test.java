@@ -8,7 +8,7 @@ public class PointCPD2Test {
   public static void main(String[] args) {
 
     System.out.println("Design 2 Test");
-    System.out.print("Enter number of tests to conduct: ");
+    System.out.print("Enter number of tests to conduct for each method: ");
     Scanner scan = new Scanner(System.in);
     int numberOfScans = scan.nextInt();
     System.out.println(numberOfScans);
@@ -17,102 +17,155 @@ public class PointCPD2Test {
     
   }
   
-  public static boolean pointTest(int number) {
+  public static void pointTest(int number) {
 		
-	  Random rand = new Random();
-	  
-	  long startTime = System.currentTimeMillis();
-	  for (int i = 0; i < number; i++) {
+	Random rand = new Random();
+	 
+	PointCPD2[] arrayOfNumbers = new PointCPD2[number];
+	PointCPD2[] arrayOfNumbers1 = new PointCPD2[number];
+
+	long startTime = System.currentTimeMillis();
+	for (int i = 0; i < number; i++) {
+  		double x = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
+		double y = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
+
+		arrayOfNumbers1[i] = new PointCPD2('C', x, y);
+	}
+	long endTime = System.currentTimeMillis();
+	long time = endTime - startTime;
+	System.out.println("Total time taken in ms for Constructor taking Cartesian Points: " + time);
+
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < number; i++) {
+  		double x = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
+		double y = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
+		double rho = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
+		double theta = Math.toDegrees(Math.atan2(y, x));
+
+
+		arrayOfNumbers[i] = new PointCPD2('P', rho, theta);
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for Constructor taking Polar Points: " + time);
+
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < arrayOfNumbers.length; i++){
 		if ((i%2)==0) {
+			arrayOfNumbers[i].getX();
+		} else {
+			arrayOfNumbers1[i].getX();
+		}
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for getX(): " + time);
+
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < arrayOfNumbers.length; i++){
+		if ((i%2)==0) {
+			arrayOfNumbers[i].getY();
+		} else {
+			arrayOfNumbers1[i].getY();
+		}
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for getY(): " + time);
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < arrayOfNumbers.length; i++){
+		if ((i%2)==0) {
+			arrayOfNumbers[i].getRho();
+		} else {
+			arrayOfNumbers1[i].getRho();
+		}
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for getRho(): " + time);
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < arrayOfNumbers.length; i++){
+		if ((i%2)==0) {
+			arrayOfNumbers[i].getTheta();
+		} else {
+			arrayOfNumbers1[i].getTheta();
+		}
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for getTheta(): " + time);
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < arrayOfNumbers.length; i++){
+		if ((i%2)==0){
 			double x = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
 			double y = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
 			double rho = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
 			double theta = Math.toDegrees(Math.atan2(y, x));
-			PointCPD2 point = new PointCPD2('P', rho, theta);
-			point.getX();
-			point.getY();
-			point.getRho();
-			point.getTheta();
-			
-			PointCPD2 point1, point2, point3, point4, point5;
-			PointCPD3 point6, point7, point8, point9, point10;
-			
-			point1 = point.rotatePoint(0.0);
-			point2 = point.rotatePoint(10.0);
-			point3 = point.rotatePoint(20.0);
-			point4 = point.rotatePoint(30.0);
-			point5 = point.rotatePoint(40.0);
-		
-			point.getDistance(point1);
-			point.getDistance(point2);
-			point.getDistance(point3);
-			point.getDistance(point4);
-			point.getDistance(point5);
-			
-			point6 = point1.convertStorageToCartesian();
-			point7 = point2.convertStorageToCartesian();
-			point8 = point3.convertStorageToCartesian();
-			point9 = point4.convertStorageToCartesian();
-			point10 = point5.convertStorageToCartesian();
-			
-			point.getDistance(point6.convertStorageToPolar());
-			point.getDistance(point7.convertStorageToPolar());
-			point.getDistance(point8.convertStorageToPolar());
-			point.getDistance(point9.convertStorageToPolar());
-			point.getDistance(point10.convertStorageToPolar());
-			
-			point1 = point6.convertStorageToPolar();
-			point2 = point7.convertStorageToPolar();
-			point3 = point8.convertStorageToPolar();
-			point4 = point9.convertStorageToPolar();
-			point5 = point10.convertStorageToPolar();
-			
+			PointCPD2 point1 = new PointCPD2('P', rho, theta);
+			arrayOfNumbers[i].getDistance(point1);
 		} else {
 			double x = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
 			double y = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
-			PointCPD2 point = new PointCPD2('C', x, y);
-			point.getX();
-			point.getY();
-			point.getRho();
-			point.getTheta();
-			
-			PointCPD2 point1, point2, point3, point4, point5;
-			PointCPD3 point6, point7, point8, point9, point10;
-			
-			point1 = point.rotatePoint(0.0);
-			point2 = point.rotatePoint(10.0);
-			point3 = point.rotatePoint(20.0);
-			point4 = point.rotatePoint(30.0);
-			point5 = point.rotatePoint(40.0);
-		
-			point.getDistance(point1);
-			point.getDistance(point2);
-			point.getDistance(point3);
-			point.getDistance(point4);
-			point.getDistance(point5);
-			
-			point6 = point1.convertStorageToCartesian();
-			point7 = point2.convertStorageToCartesian();
-			point8 = point3.convertStorageToCartesian();
-			point9 = point4.convertStorageToCartesian();
-			point10 = point5.convertStorageToCartesian();
-			
-			point.getDistance(point6.convertStorageToPolar());
-			point.getDistance(point7.convertStorageToPolar());
-			point.getDistance(point8.convertStorageToPolar());
-			point.getDistance(point9.convertStorageToPolar());
-			point.getDistance(point10.convertStorageToPolar());
-			
-			point1 = point6.convertStorageToPolar();
-			point2 = point7.convertStorageToPolar();
-			point3 = point8.convertStorageToPolar();
-			point4 = point9.convertStorageToPolar();
-			point5 = point10.convertStorageToPolar();
+			PointCPD2 point1 = new PointCPD2('C', x, y);
+			arrayOfNumbers1[i].getDistance(point1);
+
 		}
-	  }
-	  long endTime = System.currentTimeMillis();
-	  long time = endTime - startTime;
-	  System.out.println("Total time taken in ms: " + time);
-	  return true;
-  }
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for getDistance(): " + time);
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < arrayOfNumbers.length; i++){
+		if ((i%2)==0){
+			arrayOfNumbers[i].rotatePoint(rand.nextInt(361));
+		} else {
+			arrayOfNumbers1[i].rotatePoint(rand.nextInt(361));
+		}
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for rotatePoint(): " + time);
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < arrayOfNumbers.length; i++){
+		if ((i%2)==0){
+			arrayOfNumbers[i].convertStorageToPolar();
+		} else {
+			arrayOfNumbers1[i].convertStorageToPolar();
+		}
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for convertStorageToPolar(): " + time);
+
+	startTime = System.currentTimeMillis();
+	for (int i = 0; i < arrayOfNumbers.length; i++){
+		if ((i%2)==0){
+			arrayOfNumbers[i].convertStorageToCartesian();
+		} else {
+			arrayOfNumbers1[i].convertStorageToCartesian();
+		}
+	}
+	endTime = System.currentTimeMillis();
+	time = endTime - startTime;
+	System.out.println("Total time taken in ms for convertStorageToCartesian(): " + time);
+
+	System.out.println("Test Complete");
+
+	}
 }
+
+
+
+
+
+
+
+
