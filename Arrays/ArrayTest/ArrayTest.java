@@ -9,8 +9,11 @@ public class ArrayTest {
 		Scanner scan = new Scanner(System.in);
 		int number = scan.nextInt();
 		scan.close();
+		System.out.println();
 		ArrayListTest(number);
+		System.out.println();
 		VectorTest(number);
+		System.out.println();
 		
 	}
 
@@ -19,14 +22,11 @@ public class ArrayTest {
 		ArrayList<Integer> al = new ArrayList<Integer>();
 		System.out.println("ArrayList");
 		
-		System.out.println();
-		
 		Random rand = new Random();
 		long startTime = System.currentTimeMillis();
 		
 		for (int i = 0; i < number; i++) {
-			int x = rand.nextInt(9);
-			al.add(x);
+			al.add(rand.nextInt(9));
 		}
 		
 		long endTime = System.currentTimeMillis();
@@ -36,11 +36,18 @@ public class ArrayTest {
 	
 	public static void VectorTest(int number) {
 		
-		System.out.println("Vector");
-		System.out.print("Number of Integers to add: ");
-		Scanner scan1 = new Scanner(System.in);
-		int number = scan1.nextInt();
-		scan1.close();
-		System.out.println();
+		Vector<Integer> v = new Vector<Integer>(number);
+		System.out.println("VectorTest");
+		
+		Random rand = new Random();
+		long startTime = System.currentTimeMillis();
+		
+		for (int i = 0; i < number; i++) {
+			v.add(rand.nextInt(9));
+		}
+		
+		long endTime = System.currentTimeMillis();
+		long time = endTime - startTime;
+		System.out.println("Total time taken in ms: " + time);
 	}
 }
