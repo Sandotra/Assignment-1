@@ -11,7 +11,7 @@ public class PointCPD2Test {
     System.out.print("Enter number of tests to conduct for each method: ");
     Scanner scan = new Scanner(System.in);
     int numberOfScans = scan.nextInt();
-    System.out.println(numberOfScans);
+    System.out.println();
     pointTest(numberOfScans);
     scan.close();
     

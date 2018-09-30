@@ -14,6 +14,8 @@ public class ArrayTest {
 		System.out.println();
 		VectorTest(number);
 		System.out.println();
+		ArrayTest(number);
+		System.out.println();
 		
 	}
 
@@ -32,12 +34,13 @@ public class ArrayTest {
 		long endTime = System.currentTimeMillis();
 		long time = endTime - startTime;
 		System.out.println("Total time taken in ms: " + time);
+		
 	}
 	
 	public static void VectorTest(int number) {
 		
 		Vector<Integer> v = new Vector<Integer>(number);
-		System.out.println("VectorTest");
+		System.out.println("Vector");
 		
 		Random rand = new Random();
 		long startTime = System.currentTimeMillis();
@@ -49,5 +52,24 @@ public class ArrayTest {
 		long endTime = System.currentTimeMillis();
 		long time = endTime - startTime;
 		System.out.println("Total time taken in ms: " + time);
+		
+	}
+	
+	public static void ArrayTest(int number) {
+		
+		int[] array = new int[number];
+		System.out.println("Array");
+		
+		Random rand = new Random();
+		long startTime = System.currentTimeMillis();
+		
+		for (int i = 0; i < number; i++) {
+			array[i] = rand.nextInt(9);
+		}
+		
+		long endTime = System.currentTimeMillis();
+		long time = endTime - startTime;
+		System.out.println("Total time take in ms: " + time);
+		
 	}
 }
