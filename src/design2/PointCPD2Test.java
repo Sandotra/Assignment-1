@@ -47,8 +47,8 @@ public class PointCPD2Test {
 			point.getRho();
 			point.getTheta();
 			PointCPD2 point1;
-			point.convertStorageToPolar();
-			point1 = point.convertStorageToCartesian();
+			point.convertStorageToCartesian();
+			point1 = point.convertStorageToPolar();
 			point.getDistance(point1);
 			point.rotatePoint(10.0);
 		}
