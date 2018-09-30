@@ -50,8 +50,8 @@ public class PointCPD2
     	this.Rho = (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
     	this.Theta = Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
     } else if (type == 'P'){
-      this.Rho = Rho;
-      this.Theta = Theta;
+    	this.Rho = xOrRho;
+    	this.Theta = yOrTheta;
     }
 
     typeCoord = type;

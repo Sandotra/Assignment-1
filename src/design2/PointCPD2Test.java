@@ -1,5 +1,6 @@
 package design2;
 import java.util.Scanner;
+import design3.PointCPD3;
 import java.util.Random;
 
 public class PointCPD2Test {
@@ -32,11 +33,39 @@ public class PointCPD2Test {
 			point.getY();
 			point.getRho();
 			point.getTheta();
-			PointCPD2 point1;
-			point.convertStorageToCartesian();
-			point1 = point.convertStorageToPolar();
+			
+			PointCPD2 point1, point2, point3, point4, point5;
+			PointCPD3 point6, point7, point8, point9, point10;
+			
+			point1 = point.rotatePoint(0.0);
+			point2 = point.rotatePoint(10.0);
+			point3 = point.rotatePoint(20.0);
+			point4 = point.rotatePoint(30.0);
+			point5 = point.rotatePoint(40.0);
+		
 			point.getDistance(point1);
-			point.rotatePoint(10.0);
+			point.getDistance(point2);
+			point.getDistance(point3);
+			point.getDistance(point4);
+			point.getDistance(point5);
+			
+			point6 = point1.convertStorageToCartesian();
+			point7 = point2.convertStorageToCartesian();
+			point8 = point3.convertStorageToCartesian();
+			point9 = point4.convertStorageToCartesian();
+			point10 = point5.convertStorageToCartesian();
+			
+			point.getDistance(point6.convertStorageToPolar());
+			point.getDistance(point7.convertStorageToPolar());
+			point.getDistance(point8.convertStorageToPolar());
+			point.getDistance(point9.convertStorageToPolar());
+			point.getDistance(point10.convertStorageToPolar());
+			
+			point1 = point6.convertStorageToPolar();
+			point2 = point7.convertStorageToPolar();
+			point3 = point8.convertStorageToPolar();
+			point4 = point9.convertStorageToPolar();
+			point5 = point10.convertStorageToPolar();
 			
 		} else {
 			double x = ((rand.nextInt(50) +1 )*rand.nextDouble() + 1);
@@ -46,11 +75,39 @@ public class PointCPD2Test {
 			point.getY();
 			point.getRho();
 			point.getTheta();
-			PointCPD2 point1;
-			point.convertStorageToCartesian();
-			point1 = point.convertStorageToPolar();
+			
+			PointCPD2 point1, point2, point3, point4, point5;
+			PointCPD3 point6, point7, point8, point9, point10;
+			
+			point1 = point.rotatePoint(0.0);
+			point2 = point.rotatePoint(10.0);
+			point3 = point.rotatePoint(20.0);
+			point4 = point.rotatePoint(30.0);
+			point5 = point.rotatePoint(40.0);
+		
 			point.getDistance(point1);
-			point.rotatePoint(10.0);
+			point.getDistance(point2);
+			point.getDistance(point3);
+			point.getDistance(point4);
+			point.getDistance(point5);
+			
+			point6 = point1.convertStorageToCartesian();
+			point7 = point2.convertStorageToCartesian();
+			point8 = point3.convertStorageToCartesian();
+			point9 = point4.convertStorageToCartesian();
+			point10 = point5.convertStorageToCartesian();
+			
+			point.getDistance(point6.convertStorageToPolar());
+			point.getDistance(point7.convertStorageToPolar());
+			point.getDistance(point8.convertStorageToPolar());
+			point.getDistance(point9.convertStorageToPolar());
+			point.getDistance(point10.convertStorageToPolar());
+			
+			point1 = point6.convertStorageToPolar();
+			point2 = point7.convertStorageToPolar();
+			point3 = point8.convertStorageToPolar();
+			point4 = point9.convertStorageToPolar();
+			point5 = point10.convertStorageToPolar();
 		}
 	  }
 	  long endTime = System.currentTimeMillis();
