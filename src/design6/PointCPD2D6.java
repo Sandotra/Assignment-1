@@ -13,7 +13,7 @@ public class PointCPD2D6 implements PointCPD6 {
     	}
     	if (type == 'C') {
     		this.xOrRho = (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
-    		this.yOrTheta = Math.toDegrees(Math.atan2(xOrTheta, yOrRho));
+    		this.yOrTheta = Math.toDegrees(Math.atan2(xOrRho, yOrTheta));
     	} else if (type == 'P'){
       		this.xOrRho = xOrRho;
       		this.yOrTheta = yOrTheta;
