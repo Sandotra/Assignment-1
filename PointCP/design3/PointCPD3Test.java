@@ -1,9 +1,6 @@
 package design3;
 import java.util.Scanner;
-import design2.PointCPD2;
-
 import java.util.Random;
-
 
 public class PointCPD3Test {
 	
@@ -13,7 +10,7 @@ public class PointCPD3Test {
     System.out.print("Enter number of tests to conduct for each method: ");
     Scanner scan = new Scanner(System.in);
     int numberOfScans = scan.nextInt();
-    System.out.println(numberOfScans);
+    System.out.println();
     pointTest(numberOfScans);
     scan.close();
     
