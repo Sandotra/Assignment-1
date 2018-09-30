@@ -41,14 +41,14 @@ public class PointCPD2
   /**
    * Constructs a coordinate object, with a type identifier.
    */
-  public PointCPD2(char type, double Rho, double Theta)
+  public PointCPD2(char type, double xOrRho, double yOrTheta)
   {
     if(type != 'C' && type != 'P') {
       throw new IllegalArgumentException();
     }
     if (type == 'C') {
-    	Rho = (Math.sqrt(Math.pow(Rho, 2) + Math.pow(Theta, 2)));
-    	Theta = Math.toDegrees(Math.atan2(Theta, Rho));
+    	this.Rho = (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
+    	this.Theta = Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
     } else if (type == 'P'){
       this.Rho = Rho;
       this.Theta = Theta;
@@ -145,6 +145,8 @@ public class PointCPD2
    */
   public String toString()
   {
-    return "Stored as Polar [" + getRho() + "," + getTheta() + "]" + "\n";
+    return "Stored as " + (typeCoord == 'C' 
+       ? "Cartesian  (" + getX() + "," + getY() + ")"
+       : "Polar [" + getRho() + "," + getTheta() + "]") + "\n";
   }
 }
