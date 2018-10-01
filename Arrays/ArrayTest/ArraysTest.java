@@ -35,9 +35,11 @@ public class ArraysTest {
 		}
 		
 		long constructionEndTime = System.currentTimeMillis();
+		
 		int sum = 0;
-		for (int i = 0; i < al.size(); i++) {
-			sum = sum + al.get(i);
+		Iterator<Integer> iterate = al.iterator();
+		while (iterate.hasNext()) {
+			sum = sum + iterate.next();
 		}
 		
 		long endTime = System.currentTimeMillis();
@@ -64,9 +66,11 @@ public class ArraysTest {
 		}
 		
 		long constructionEndTime = System.currentTimeMillis();
+		
 		int sum = 0;
-		for (int i = 0; i < v.size(); i++) {
-			sum = sum + v.get(i);
+		Iterator<Integer> iterate = v.iterator();
+		while (iterate.hasNext()) {
+			sum = sum + iterate.next();
 		}
 		
 		long endTime = System.currentTimeMillis();
